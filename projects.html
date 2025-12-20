@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Prabhanshu Saxena</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  /* ================= ROOT ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #050816;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+/* ================= BACKGROUND ================= */
+.digital-background {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.digital-background::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 100px 100px;
+}
+
+/* Floating squares */
+.square {
+    position: absolute;
+    background: rgba(255,255,255,0.45);
+    border-radius: 2px;
+    animation: floatUp linear infinite;
+}
+
+.sq-1 { width: 4px; height: 4px; animation-duration: 14s; }
+.sq-2 { width: 6px; height: 6px; animation-duration: 18s; }
+.sq-3 { width: 8px; height: 8px; animation-duration: 22s; background: rgba(56,189,248,0.6); }
+.sq-4 { width: 5px; height: 5px; animation-duration: 16s; background: rgba(167,139,250,0.6); }
+
+@keyframes floatUp {
+    0% { transform: translateY(110vh); opacity: 0; }
+    10% { opacity: 0.4; }
+    90% { opacity: 0.4; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+/* ================= NAVBAR ================= */
+nav {
+    position: fixed;              /* 🔥 REQUIRED */
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 20px 5%;
+    background: rgba(5,8,22,0.9);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+}
+
+nav strong {
+    font-size: 1.3rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #38bdf8;
+}
+
+/* 3 dots */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #ffffff;
+
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* ================= MOBILE MENU ================= */
+.mobile-menu {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    background: rgba(15,23,42,0.95);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 15px 20px;
+    display: none;
+    flex-direction: column;
+    gap: 14px;
+    z-index: 999;
+    backdrop-filter: blur(10px);
+}
+
+.mobile-menu a {
+    text-decoration: none;
+    color: #cbd5e1;
+    font-size: 0.95rem;
+}
+
+.mobile-menu a:hover {
+    color: #38bdf8;
+}
+
+/* ================= SECTION ================= */
+section {
+    padding: 120px 10% 80px; /* top padding for fixed nav */
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+p.subtitle {
+    color: #94a3b8;
+    margin-bottom: 50px;
+}
+
+/* ================= PROJECTS ================= */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background: rgba(30,41,59,0.4);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    border-color: #38bdf8;
+    box-shadow: 0 10px 40px -10px rgba(56,189,248,0.25);
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.project-content {
+    padding: 20px;
+}
+
+.project-content h3 {
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 10px;
+}
+
+.project-content p {
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+/* Tags */
+.tags {
+    margin-top: 15px;
+}
+
+.tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.1);
+    margin-right: 5px;
+}
+
+/* Actions */
+.project-actions {
+    margin-top: 18px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.project-actions a {
+    font-size: 0.8rem;
+    padding: 6px 14px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 500;
+    color: #ffffff;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
+}
+
+.project-actions a.live {
+    background: #38bdf8;
+    color: #000;
+    border: none;
+}
+
+.project-actions a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(56,189,248,0.3);
+}
+
+/* ================= FOOTER ================= */
+footer {
+    text-align: center;
+    padding: 40px 10%;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    color: #94a3b8;
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* Tablet + Mobile */
+@media (max-width: 900px) {
+    .nav-links {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    section {
+        padding: 120px 6% 60px;
+    }
+
+    h1 {
+        font-size: 2.3rem;
+        text-align: center;
+    }
+
+    p.subtitle {
+        text-align: center;
+        font-size: 0.95rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card img {
+        height: 180px;
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    nav strong {
+        font-size: 1.1rem;
+    }
+
+    footer {
+        padding: 30px 6%;
+        font-size: 0.85rem;
+    }
+}
+</style>
+</head>
+<body>
+    <script>
+function toggleMenu() {
+    const menu = document.getElementById("mobileMenu");
+    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+}
+
+function closeMenu() {
+    document.getElementById("mobileMenu").style.display = "none";
+}
+</script>
+
+    <div class="digital-background">
+    <div class="square sq-1" style="left:10%"></div>
+    <div class="square sq-2" style="left:25%"></div>
+    <div class="square sq-3" style="left:40%"></div>
+    <div class="square sq-4" style="left:55%"></div>
+    <div class="square sq-1" style="left:70%"></div>
+    <div class="square sq-2" style="left:85%"></div>
+
+    <div class="square sq-3" style="left:15%; animation-delay: 6s;"></div>
+    <div class="square sq-4" style="left:45%; animation-delay: 9s;"></div>
+    <div class="square sq-2" style="left:65%; animation-delay: 12s;"></div>
+</div>
+
+
+<nav>
+    <strong>Prabhanshu</strong>
+
+    <!-- Desktop Links -->
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="index.html#contact">Contact</a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <i class="fa-solid fa-ellipsis-vertical"></i>
+    </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" onclick="closeMenu()">Home</a>
+    <a href="projects.html" onclick="closeMenu()">Projects</a>
+    <a href="index.html#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+
+<section>
+    <h1>My Projects</h1>
+    <p class="subtitle">UI/UX Design & Web Development Work</p>
+
+    <div class="projects-grid">
+
+        <!-- Booknest -->
+        <div class="project-card">
+            <img src="images/booknest.png" alt="Booknest Project">
+            <div class="project-content">
+                <h3>Booknest</h3>
+                <p>Digital library platform with intuitive UI and responsive UX.</p>
+
+                <div class="tags">
+                    <span class="tag">UI/UX</span>
+                    <span class="tag">Figma</span>
+                </div>
+
+                <div class="project-actions">
+                    <a href="https://www.figma.com/proto/MRzGHpNFLRM0De7pPQ1aJT/BookNest?node-id=2-2&starting-point-node-id=2%3A2"
+                       target="_blank"
+                       class="live">
+                        View Design
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Peblos -->
+        <div class="project-card">
+            <img src="images/peblos.jpg" alt="Peblos Project">
+            <div class="project-content">
+                <h3>Peblos</h3>
+                <p>Storytelling and learning platform for kids.</p>
+
+                <div class="tags">
+                    <span class="tag">UI/UX</span>
+                    <span class="tag">Figma</span>
+                </div>
+
+                <div class="project-actions">
+                    <a href="https://www.figma.com/proto/44QgImp5Ycj2lFzjNw5Vj3/peblos?node-id=0-1"
+                       target="_blank"
+                       class="live">
+                        View Design
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+            <!-- Global Trend -->
+        <div class="project-card">
+            <img src="images/Global - trend .jpeg" alt="Global Trend Website">
+            <div class="project-content">
+                <h3>Global Trend Redesign</h3>
+                <p>Multi-page corporate website redesign.</p>
+
+                <div class="tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+                </div>
+
+                <div class="project-actions">
+                    <a href="https://prabhanshu-17.github.io/Global-Trend-website/"
+                       target="_blank"
+                       class="live">
+                        Live Website
+                    </a>
+                </div>
+            </div>
+        </div>
+
+ <!-- Teddy Talk -->
+        <div class="project-card">
+            <img src="images/teddy talk.png" alt=" Teddy talk Project">
+            <div class="project-content">
+                <h3>Teddy Talk</h3>
+                <p>A simple, thoughtful space to share feelings and connect kindly.</p>
+
+                <div class="tags">
+                    <span class="tag">UI/UX</span>
+                    <span class="tag">Figma</span>
+                </div>
+
+                <div class="project-actions">
+                    <a href="https://www.figma.com/proto/472vKlXcLUYXlM74RERNEP/Teddy-Talk?node-id=1-2&starting-point-node-id=1%3A2"
+                       target="_blank"
+                       class="live">
+                        View Design
+                    </a>
+                </div>
+            </div>
+        </div>
+
+            <!-- Dountly -->
+        <div class="project-card">
+            <img src="images/donut .jpg" alt="Teddy talk Project">
+            <div class="project-content">
+                <h3>Donutly </h3>
+                <p>A colorful way to explore donuts, one flavor at a time.</p>
+
+                <div class="tags">
+                    <span class="tag">UI/UX</span>
+                    <span class="tag">Figma</span>
+                </div>
+
+                <div class="project-actions">
+                    <a href="https://www.figma.com/proto/5RTQLdkyGCLRkAZFU26KG8/DONUTS?node-id=3-7"
+                       target="_blank"
+                       class="live">
+                        View Design
+                    </a>
+                </div>
+            </div>
+        </div>
+
+            <!-- Dountly -->
+        <div class="project-card">
+            <img src="images/Pizza Picks.png" alt="Teddy talk Project">
+            <div class="project-content">
+                <h3>Pizza Picks </h3>
+                <p>Today’s specials, freshly curated for you.</p>
+
+                <div class="tags">
+                    <span class="tag">UI/UX</span>
+                    <span class="tag">Figma</span>
+                </div>
+
+                <div class="project-actions">
+                    <a href="https://www.figma.com/proto/e37erQu5bxbHLzwPYErrF9/Pizza-hut?node-id=0-1"
+                       target="_blank"
+                       class="live">
+                        View Design
+                    </a>
+                </div>
+            </div>
+        </div>
+   <!-- Wander ease -->
+        <div class="project-card">
+            <img src="images/WanderEase.png" alt="Teddy talk Project">
+            <div class="project-content">
+                <h3>WanderEase </h3>
+                <p>Plan trips effortlessly and explore the world without stress.</p>
+
+                <div class="tags">
+                    <span class="tag">UI/UX</span>
+                    
+                </div>
+
+                <div class="project-actions">
+                    <a href="https://drive.google.com/drive/folders/1yTgqIKTaAbzwkbrwaC773uGMCibiZgMI"
+                       target="_blank"
+                       class="live">
+                        View Design
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- FaceGPT -->
+        <div class="project-card">
+            <img src="images/FaceGPT.png" alt="Teddy talk Project">
+            <div class="project-content">
+                <h3> FaceGPT  </h3>
+                <p> Search smarter with AI that understands faces, data, and context. </p>
+
+                <div class="tags">
+                    <span class="tag">UI/UX</span>
+                    
+                </div>
+
+                <div class="project-actions">
+                    <a href="https://drive.google.com/drive/folders/10SEbnaDvmXd7I05WMh8LNPcCUZQD0pNX"
+                       target="_blank"
+                       class="live">
+                        View Design
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+         
+
+
+
+    
+</section>
+
+<footer id="contact">
+    <h2>Let's Connect</h2>
+    <p style="color: #94a3b8; margin: 10px 0;">
+        prabhanshu72116@gmail.com | +91 83053 72116
+    </p>
+
+    <div class="socials">
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/prabhanshu-saxena-b39a67345/" 
+           target="_blank" 
+           aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin"></i>
+        </a>
+
+        <!-- Email -->
+        <a href="mailto:prabhanshu72116@gmail.com" 
+           aria-label="Email">
+            <i class="fa-solid fa-envelope"></i>
+        </a>
+    </div>
+</footer>
