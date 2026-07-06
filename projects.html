@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-  /* ================= ROOT ================= */
+/* ================= ROOT ================= */
 * {
     margin: 0;
     padding: 0;
@@ -63,7 +63,7 @@ body {
 
 /* ================= NAVBAR ================= */
 nav {
-    position: fixed;              /* 🔥 REQUIRED */
+    position: fixed;              /* REQUIRED */
     top: 0;
     left: 0;
     width: 100%;
@@ -167,6 +167,8 @@ p.subtitle {
     overflow: hidden;
     border: 1px solid rgba(255,255,255,0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
 
 .project-card:hover {
@@ -179,25 +181,35 @@ p.subtitle {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 .project-content {
-    padding: 20px;
+    padding: 22px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .project-content h3 {
     font-family: 'Montserrat', sans-serif;
     margin-bottom: 10px;
+    font-size: 1.25rem;
 }
 
 .project-content p {
     color: #94a3b8;
     font-size: 0.9rem;
+    margin-bottom: 15px;
+    flex: 1;
 }
 
 /* Tags */
 .tags {
-    margin-top: 15px;
+    margin-top: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
 }
 
 .tag {
@@ -206,12 +218,11 @@ p.subtitle {
     padding: 4px 12px;
     border-radius: 20px;
     background: rgba(255,255,255,0.1);
-    margin-right: 5px;
 }
 
 /* Actions */
 .project-actions {
-    margin-top: 18px;
+    margin-top: 20px;
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
@@ -219,7 +230,7 @@ p.subtitle {
 
 .project-actions a {
     font-size: 0.8rem;
-    padding: 6px 14px;
+    padding: 6px 16px;
     border-radius: 20px;
     text-decoration: none;
     font-weight: 500;
@@ -245,6 +256,24 @@ footer {
     padding: 40px 10%;
     border-top: 1px solid rgba(255,255,255,0.05);
     color: #94a3b8;
+}
+
+.socials {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
+    font-size: 1.5rem;
+}
+
+.socials a {
+    color: #cbd5e1;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.socials a:hover {
+    color: #38bdf8;
+    transform: translateY(-3px);
 }
 
 /* ================= RESPONSIVE ================= */
@@ -303,7 +332,7 @@ footer {
 </style>
 </head>
 <body>
-    <script>
+<script>
 function toggleMenu() {
     const menu = document.getElementById("mobileMenu");
     menu.style.display = menu.style.display === "flex" ? "none" : "flex";
@@ -314,7 +343,7 @@ function closeMenu() {
 }
 </script>
 
-    <div class="digital-background">
+<div class="digital-background">
     <div class="square sq-1" style="left:10%"></div>
     <div class="square sq-2" style="left:25%"></div>
     <div class="square sq-3" style="left:40%"></div>
@@ -327,14 +356,14 @@ function closeMenu() {
     <div class="square sq-2" style="left:65%; animation-delay: 12s;"></div>
 </div>
 
-
 <nav>
     <strong>Prabhanshu</strong>
 
     <!-- Desktop Links -->
     <div class="nav-links">
         <a href="index.html">Home</a>
-        <a href="projects.html">Projects</a>
+        <a href="projects.html" style="color: #38bdf8;">Projects</a>
+        <a href="https://github.com/prabhanshu-17" target="_blank">GitHub</a>
         <a href="index.html#contact">Contact</a>
     </div>
 
@@ -343,25 +372,150 @@ function closeMenu() {
         <i class="fa-solid fa-ellipsis-vertical"></i>
     </div>
 </nav>
+
 <div class="mobile-menu" id="mobileMenu">
     <a href="index.html" onclick="closeMenu()">Home</a>
     <a href="projects.html" onclick="closeMenu()">Projects</a>
+    <a href="https://github.com/prabhanshu-17" target="_blank" onclick="closeMenu()">GitHub</a>
     <a href="index.html#contact" onclick="closeMenu()">Contact</a>
 </div>
 
-
 <section>
     <h1>My Projects</h1>
-    <p class="subtitle">UI/UX Design & Web Development Work</p>
+    <p class="subtitle">Full-Stack Development, AI Integration & UI/UX Case Studies</p>
 
     <div class="projects-grid">
+
+        <!-- Gugu AI -->
+        <div class="project-card">
+            <img src="images/gug.png" alt="Gugu AI Mental Wellness Platform">
+            <div class="project-content">
+                <h3>Gugu AI Platform</h3>
+                <p>Collaborated with a 6-member team to build an AI-powered mental wellness app. Focused on responsive frontend development and empathetic UI/UX design.</p>
+
+                <div class="tags">
+                    <span class="tag">AI / ML</span>
+                    <span class="tag">React.js</span>
+                    <span class="tag">UI/UX</span>
+                </div>
+
+                <div class="project-actions">
+                    <a href="https://gugu-pearl.vercel.app/" target="_blank" class="live">Live Platform</a>
+                    <a href="https://github.com/prabhanshu-17" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- What2Cook -->
+        <div class="project-card">
+            <img src="images/what2cook.png" alt="What2Cook App">
+            <div class="project-content">
+                <h3>What2Cook</h3>
+                <p>Full-stack mobile app & web platform that suggests custom recipes based on available ingredients using the OpenAI API and Node.js REST services.</p>
+
+                <div class="tags">
+                    <span class="tag">OpenAI API</span>
+                    <span class="tag">Node.js</span>
+                    <span class="tag">Full Stack</span>
+                </div>
+
+                <div class="project-actions">
+                    <a href="https://drive.google.com/file/d/1Irw6SM2yE5VkcubusvRd-N_gUzkQk7xD/view?usp=sharing" target="_blank" class="live">View Project Link</a>
+                    <a href="https://github.com/prabhanshu-17" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kryptos Wallet -->
+        <div class="project-card">
+            <img src="images/Screenshot 2026-07-06 235829.png" alt="Kryptos Wallet App">
+            <div class="project-content">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                    <span style="background: rgba(247, 147, 26, 0.15); color: #f7931a; border: 1px solid rgba(247, 147, 26, 0.4); padding: 2px 10px; border-radius: 12px; font-size: 0.7rem; font-weight: 700; display: inline-flex; align-items: center; gap: 5px;">
+                        <i class="fa-brands fa-bitcoin"></i> Summer of Bitcoin 2026
+                    </span>
+                </div>
+
+                <h3>Kryptos Wallet</h3>
+                <p>Comprehensive FinTech case study exploring the Bitcoin open-source ecosystem. Crafted end-to-end user flows for onboarding and seed recovery as part of the Summer of Bitcoin Design Track.</p>
+
+                <div class="tags">
+                    <span class="tag">Bitcoin UX</span>
+                    <span class="tag">Figma</span>
+                    <span class="tag">FinTech</span>
+                </div>
+
+                <div class="project-actions">
+                    <a href="https://github.com/prabhanshu-17" target="_blank" class="live">View Case Study</a>
+                    <a href="https://drive.google.com/file/d/17s-mVIAnL1UJ-xMLqNZfJS4KQFE76tiu/view?usp=sharing" target="_blank" style="border-color: #f7931a; color: #f7931a;">View Certificate</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Flotilla -->
+        <div class="project-card">
+            <img src="images/flotilla.png" alt="Flotilla Platform" onerror="this.src='https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=600&auto=format&fit=crop'">
+            <div class="project-content">
+                <h3>Flotilla Platform</h3>
+                <p>Designed guided setup interfaces and intent selection cards to streamline onboarding flows for decentralized community chat platforms.</p>
+
+                <div class="tags">
+                    <span class="tag">Web3 UX</span>
+                    <span class="tag">UI/UX</span>
+                    <span class="tag">Figma</span>
+                </div>
+
+                <div class="project-actions">
+                    <a href="https://www.figma.com/proto/lCW8L9n9rEOdGdK4l1DBKK/Bitcoin?node-id=0-1" target="_blank" class="live">View Design</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Luxury Cafe -->
+        <div class="project-card">
+            <img src="images/luxury-cafe.png" alt="Luxury Cafe Brand Website" onerror="this.src='https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=600&auto=format&fit=crop'">
+            <div class="project-content">
+                <h3>Luxury Café Website</h3>
+                <p>Designed and developed an ultra-responsive frontend interface for a luxury café brand, featuring sleek visual components and optimized layouts across devices.</p>
+
+                <div class="tags">
+                    <span class="tag">HTML / CSS</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Frontend</span>
+                </div>
+
+                <div class="project-actions">
+                    <a href="https://luxury-cafe-website-dos3.vercel.app/" target="_blank" class="live">Live Website</a>
+                    <a href="https://github.com/prabhanshu-17" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Global Trend -->
+        <div class="project-card">
+            <img src="images/Global - trend .jpeg" alt="Global Trend Website">
+            <div class="project-content">
+                <h3>Global Trend Redesign</h3>
+                <p>Multi-page corporate website frontend overhaul built for seamless accessibility, modern styling, and clean performance.</p>
+
+                <div class="tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+                </div>
+
+                <div class="project-actions">
+                    <a href="https://prabhanshu-17.github.io/Global-Trend-website/" target="_blank" class="live">Live Website</a>
+                </div>
+            </div>
+        </div>
 
         <!-- Booknest -->
         <div class="project-card">
             <img src="images/booknest.png" alt="Booknest Project">
             <div class="project-content">
                 <h3>Booknest</h3>
-                <p>Digital library platform with intuitive UI and responsive UX.</p>
+                <p>Digital library platform designed with an intuitive UI and responsive UX to help readers organize their book lists easily.</p>
 
                 <div class="tags">
                     <span class="tag">UI/UX</span>
@@ -369,11 +523,7 @@ function closeMenu() {
                 </div>
 
                 <div class="project-actions">
-                    <a href="https://www.figma.com/proto/MRzGHpNFLRM0De7pPQ1aJT/BookNest?node-id=2-2&starting-point-node-id=2%3A2"
-                       target="_blank"
-                       class="live">
-                        View Design
-                    </a>
+                    <a href="https://www.figma.com/proto/MRzGHpNFLRM0De7pPQ1aJT/BookNest?node-id=2-2&starting-point-node-id=2%3A2" target="_blank" class="live">View Design</a>
                 </div>
             </div>
         </div>
@@ -383,7 +533,7 @@ function closeMenu() {
             <img src="images/peblos.jpg" alt="Peblos Project">
             <div class="project-content">
                 <h3>Peblos</h3>
-                <p>Storytelling and learning platform for kids.</p>
+                <p>Interactive storytelling and educational discovery platform tailored to provide engaging digital reading for kids.</p>
 
                 <div class="tags">
                     <span class="tag">UI/UX</span>
@@ -391,45 +541,17 @@ function closeMenu() {
                 </div>
 
                 <div class="project-actions">
-                    <a href="https://www.figma.com/proto/44QgImp5Ycj2lFzjNw5Vj3/peblos?node-id=0-1"
-                       target="_blank"
-                       class="live">
-                        View Design
-                    </a>
+                    <a href="https://www.figma.com/proto/44QgImp5Ycj2lFzjNw5Vj3/peblos?node-id=0-1" target="_blank" class="live">View Design</a>
                 </div>
             </div>
         </div>
 
-
-            <!-- Global Trend -->
+        <!-- Teddy Talk -->
         <div class="project-card">
-            <img src="images/Global - trend .jpeg" alt="Global Trend Website">
-            <div class="project-content">
-                <h3>Global Trend Redesign</h3>
-                <p>Multi-page corporate website redesign.</p>
-
-                <div class="tags">
-                    <span class="tag">HTML</span>
-                    <span class="tag">CSS</span>
-                    <span class="tag">JavaScript</span>
-                </div>
-
-                <div class="project-actions">
-                    <a href="https://prabhanshu-17.github.io/Global-Trend-website/"
-                       target="_blank"
-                       class="live">
-                        Live Website
-                    </a>
-                </div>
-            </div>
-        </div>
-
- <!-- Teddy Talk -->
-        <div class="project-card">
-            <img src="images/teddy talk.png" alt=" Teddy talk Project">
+            <img src="images/teddy talk.png" alt="Teddy Talk Project">
             <div class="project-content">
                 <h3>Teddy Talk</h3>
-                <p>A simple, thoughtful space to share feelings and connect kindly.</p>
+                <p>A simple, thoughtful space designed for users to share feelings, connect kindly, and promote everyday emotional support.</p>
 
                 <div class="tags">
                     <span class="tag">UI/UX</span>
@@ -437,21 +559,17 @@ function closeMenu() {
                 </div>
 
                 <div class="project-actions">
-                    <a href="https://www.figma.com/proto/472vKlXcLUYXlM74RERNEP/Teddy-Talk?node-id=1-2&starting-point-node-id=1%3A2"
-                       target="_blank"
-                       class="live">
-                        View Design
-                    </a>
+                    <a href="https://www.figma.com/proto/472vKlXcLUYXlM74RERNEP/Teddy-Talk?node-id=1-2&starting-point-node-id=1%3A2" target="_blank" class="live">View Design</a>
                 </div>
             </div>
         </div>
 
-            <!-- Dountly -->
+        <!-- Donutly -->
         <div class="project-card">
-            <img src="images/donut .jpg" alt="Teddy talk Project">
+            <img src="images/donut .jpg" alt="Donutly Project">
             <div class="project-content">
-                <h3>Donutly </h3>
-                <p>A colorful way to explore donuts, one flavor at a time.</p>
+                <h3>Donutly</h3>
+                <p>A vibrant, colorful food-discovery mobile app designed to explore artisan donuts, one flavor profile at a time.</p>
 
                 <div class="tags">
                     <span class="tag">UI/UX</span>
@@ -459,21 +577,17 @@ function closeMenu() {
                 </div>
 
                 <div class="project-actions">
-                    <a href="https://www.figma.com/proto/5RTQLdkyGCLRkAZFU26KG8/DONUTS?node-id=3-7"
-                       target="_blank"
-                       class="live">
-                        View Design
-                    </a>
+                    <a href="https://www.figma.com/proto/5RTQLdkyGCLRkAZFU26KG8/DONUTS?node-id=3-7" target="_blank" class="live">View Design</a>
                 </div>
             </div>
         </div>
 
-            <!-- Dountly -->
+        <!-- Pizza Picks -->
         <div class="project-card">
-            <img src="images/Pizza Picks.png" alt="Teddy talk Project">
+            <img src="images/Pizza Picks.png" alt="Pizza Picks Project">
             <div class="project-content">
-                <h3>Pizza Picks </h3>
-                <p>Today’s specials, freshly curated for you.</p>
+                <h3>Pizza Picks</h3>
+                <p>Food ordering application mockup offering daily curated specials, streamlined customization, and fast checkout UX.</p>
 
                 <div class="tags">
                     <span class="tag">UI/UX</span>
@@ -481,64 +595,48 @@ function closeMenu() {
                 </div>
 
                 <div class="project-actions">
-                    <a href="https://www.figma.com/proto/e37erQu5bxbHLzwPYErrF9/Pizza-hut?node-id=0-1"
-                       target="_blank"
-                       class="live">
-                        View Design
-                    </a>
+                    <a href="https://www.figma.com/proto/e37erQu5bxbHLzwPYErrF9/Pizza-hut?node-id=0-1" target="_blank" class="live">View Design</a>
                 </div>
             </div>
         </div>
-   <!-- Wander ease -->
+
+        <!-- WanderEase -->
         <div class="project-card">
-            <img src="images/WanderEase.png" alt="Teddy talk Project">
+            <img src="images/WanderEase.png" alt="WanderEase Project">
             <div class="project-content">
-                <h3>WanderEase </h3>
-                <p>Plan trips effortlessly and explore the world without stress.</p>
+                <h3>WanderEase</h3>
+                <p>Comprehensive travel booking interface that helps users plan trips effortlessly and explore destinations stress-free.</p>
 
                 <div class="tags">
                     <span class="tag">UI/UX</span>
-                    
+                    <span class="tag">Case Study</span>
                 </div>
 
                 <div class="project-actions">
-                    <a href="https://drive.google.com/drive/folders/1yTgqIKTaAbzwkbrwaC773uGMCibiZgMI"
-                       target="_blank"
-                       class="live">
-                        View Design
-                    </a>
+                    <a href="https://drive.google.com/drive/folders/1yTgqIKTaAbzwkbrwaC773uGMCibiZgMI" target="_blank" class="live">View Design</a>
                 </div>
             </div>
         </div>
+
         <!-- FaceGPT -->
         <div class="project-card">
-            <img src="images/FaceGPT.png" alt="Teddy talk Project">
+            <img src="images/FaceGPT.png" alt="FaceGPT Project">
             <div class="project-content">
-                <h3> FaceGPT  </h3>
-                <p> Search smarter with AI that understands faces, data, and context. </p>
+                <h3>FaceGPT</h3>
+                <p>Hackathon UI/UX challenge project for an AI-powered search tool designed to understand faces, data, and visual context.</p>
 
                 <div class="tags">
                     <span class="tag">UI/UX</span>
-                    
+                    <span class="tag">Hackathon</span>
                 </div>
 
                 <div class="project-actions">
-                    <a href="https://drive.google.com/drive/folders/10SEbnaDvmXd7I05WMh8LNPcCUZQD0pNX"
-                       target="_blank"
-                       class="live">
-                        View Design
-                    </a>
+                    <a href="https://drive.google.com/drive/folders/10SEbnaDvmXd7I05WMh8LNPcCUZQD0pNX" target="_blank" class="live">View Design</a>
                 </div>
             </div>
         </div>
 
-
     </div>
-         
-
-
-
-    
 </section>
 
 <footer id="contact">
@@ -549,16 +647,21 @@ function closeMenu() {
 
     <div class="socials">
         <!-- LinkedIn -->
-        <a href="https://www.linkedin.com/in/prabhanshu-saxena-b39a67345/" 
-           target="_blank" 
-           aria-label="LinkedIn">
+        <a href="https://www.linkedin.com/in/prabhanshu-saxena-b39a67345/" target="_blank" aria-label="LinkedIn">
             <i class="fa-brands fa-linkedin"></i>
         </a>
 
+        <!-- GitHub -->
+        <a href="https://github.com/prabhanshu-17" target="_blank" aria-label="GitHub">
+            <i class="fa-brands fa-github"></i>
+        </a>
+
         <!-- Email -->
-        <a href="mailto:prabhanshu72116@gmail.com" 
-           aria-label="Email">
+        <a href="mailto:prabhanshu72116@gmail.com" aria-label="Email">
             <i class="fa-solid fa-envelope"></i>
         </a>
     </div>
 </footer>
+
+</body>
+</html>
